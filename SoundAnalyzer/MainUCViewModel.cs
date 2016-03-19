@@ -11,6 +11,7 @@ namespace SoundAnalyzer {
         private MMDevice selectedDevice;
         private WasapiCapture capture;
         private float peak;
+        private string decibels;
 
         public IEnumerable<MMDevice> CaptureDevices { get; private set; }
 
@@ -32,6 +33,8 @@ namespace SoundAnalyzer {
             }
         }
 
+        public string Decibels { get { return decibels; } }
+
         public MainUCViewModel() {
             synchronizationContext = SynchronizationContext.Current;
             var enumerator = new MMDeviceEnumerator();
@@ -47,15 +50,21 @@ namespace SoundAnalyzer {
             capture.DataAvailable += CaptureOnDataAvabile;
         }
 
-        int i = 0;
         private void CaptureOnDataAvabile(object sender, WaveInEventArgs e) {
-            for (int index = 0; index < e.BytesRecorded; index += 2) {
-                short sample = (short)((e.Buffer[index + 1] << 8) |
-                                        e.Buffer[index + 0]);
-                float sample32 = sample / 32768f;
-                i++;
-                Console.WriteLine("I have been summoned" + i + "    " + sample32);
+            //WaveBuffer buffer = new WaveBuffer(e.Buffer);
+            //foreach (var i in buffer.ShortBuffer) {
+            //    decibels += "Decibels:" + i +"\n";
+            //    OnPropertyChanged("Decibels");
+            //}
+            double sum = 0;
+            for (var i = 0; i< e.Buffer.Length; i = i+2) {
+                double sample = BitConverter.ToInt16(e.Buffer, i) / 32768.0;
+                sum += (sample * sample); 
             }
+            double rms = Math.Sqrt(sum / (e.Buffer.Length / 2));
+            var decibel = 20 * Math.Log10(rms);
+            decibels = "Decibels:" + decibel ;
+            OnPropertyChanged("Decibels");
             UpdatePeakMeter();
         }
 
@@ -65,4 +74,3 @@ namespace SoundAnalyzer {
         }
     }
 }
-

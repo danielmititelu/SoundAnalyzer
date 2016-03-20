@@ -10,6 +10,6 @@
         <ProgressBar Value="{Binding Peak}" Maximum="1" HorizontalAlignment="Left" Height="22" Margin="27,20,0,0" VerticalAlignment="Top" Width="172"/>
         <Button x:Name="record" Content="Record" HorizontalAlignment="Left" Margin="214,262,0,0" VerticalAlignment="Top" Width="75" Click="Record_Click"/>
         <ComboBox ItemsSource="{Binding CaptureDevices}" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}" Margin="204,20,20,0" VerticalAlignment="Top" Height="22"/>
-        <TextBox Text="{Binding Decibels, Mode=OneWay}" HorizontalAlignment="Left" Height="137" Margin="55,78,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" IsReadOnly="True" VerticalAlignment="Top" Width="452"/>
+        <TextBox Text="{Binding Freaquency, Mode=OneWay}" HorizontalAlignment="Left" Height="137" Margin="55,78,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" IsReadOnly="True" VerticalAlignment="Top" Width="452"/>
     </Grid>
 </UserControl>

@@ -4,6 +4,7 @@ using NAudio.CoreAudioApi;
 using System.Collections.Generic;
 using System;
 using NAudio.Wave;
+using NAudio.Dsp;
 
 namespace SoundAnalyzer {
     class MainUCViewModel : ViewModelBase {
@@ -11,13 +12,16 @@ namespace SoundAnalyzer {
         private MMDevice selectedDevice;
         private WasapiCapture capture;
         private float peak;
-        private string decibels;
+        private string freaq;
+        private FftBuffer fftBuffer;
+        private int fftLength = 8192;
 
         public IEnumerable<MMDevice> CaptureDevices { get; private set; }
 
         public MMDevice SelectedDevice {
             get { return selectedDevice; }
-            set { if (selectedDevice != value) {
+            set {
+                if (selectedDevice != value) {
                     selectedDevice = value;
                     OnPropertyChanged("SelectedDevice");
                 }
@@ -26,14 +30,21 @@ namespace SoundAnalyzer {
 
         public float Peak {
             get { return peak; }
-            set { if (peak != value) {
+            set {
+                if (peak != value) {
                     peak = value;
                     OnPropertyChanged("Peak");
                 }
             }
         }
 
-        public string Decibels { get { return decibels; } }
+        public string Freaquency {
+            get { return freaq; }
+            set {
+                freaq = value;
+                OnPropertyChanged("Freaquency");
+            }
+        }
 
         public MainUCViewModel() {
             synchronizationContext = SynchronizationContext.Current;
@@ -41,6 +52,25 @@ namespace SoundAnalyzer {
             CaptureDevices = enumerator.EnumerateAudioEndPoints(DataFlow.Capture, DeviceState.Active).ToArray();
             var defaultDevice = enumerator.GetDefaultAudioEndpoint(DataFlow.Capture, Role.Console);
             SelectedDevice = CaptureDevices.FirstOrDefault(c => c.ID == defaultDevice.ID);
+            fftBuffer = new FftBuffer(fftLength);
+            fftBuffer.ThresholdReached += FftBuffer_ThresholdReached;
+        }
+
+        private void FftBuffer_ThresholdReached(object sender, EventArgs e) {
+            if (peak > 0.2) { CalculateFreaquency(fftBuffer.retrieveArray(fftLength)); }
+
+        }
+
+        private void CalculateFreaquency(Complex[] complex) {
+            List<double> buffer = new List<double>();
+            for (int i = 1; i < complex.Length / 2; i += 1) {
+                buffer.Add(Math.Sqrt(complex[i].X * complex[i].X + complex[i].Y * complex[i].Y));
+            }
+
+            double freaquency;
+            freaquency = buffer.IndexOf(buffer.Max()) * 44100 / complex.Length;
+            //synchronizationContext.Post(s => Freaquency = "" + freaquency,null);
+            Freaquency = "" + freaquency;
         }
 
         public void Record() {
@@ -51,20 +81,12 @@ namespace SoundAnalyzer {
         }
 
         private void CaptureOnDataAvabile(object sender, WaveInEventArgs e) {
-            //WaveBuffer buffer = new WaveBuffer(e.Buffer);
-            //foreach (var i in buffer.ShortBuffer) {
-            //    decibels += "Decibels:" + i +"\n";
-            //    OnPropertyChanged("Decibels");
-            //}
-            double sum = 0;
-            for (var i = 0; i< e.Buffer.Length; i = i+2) {
-                double sample = BitConverter.ToInt16(e.Buffer, i) / 32768.0;
-                sum += (sample * sample); 
+            for (int index = 0; index < e.BytesRecorded; index += 2) {
+                short sample = (short)((e.Buffer[index + 1] << 8) |
+                                        e.Buffer[index + 0]);
+                float sample32 = sample / 32768f;
+                fftBuffer.AddValue(sample32);
             }
-            double rms = Math.Sqrt(sum / (e.Buffer.Length / 2));
-            var decibel = 20 * Math.Log10(rms);
-            decibels = "Decibels:" + decibel ;
-            OnPropertyChanged("Decibels");
             UpdatePeakMeter();
         }
 

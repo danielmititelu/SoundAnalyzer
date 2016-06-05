@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\App.xaml
-2-1219299513
+5-1200487232
 
-91489833600
-16-329949501
-MainUC.xaml;MainWindow.xaml;
+14-120201573
+19-1796959265
+UserControls\BarUC.xaml;UserControls\MainUC.xaml;MainWindow.xaml;UserControls\NoteUC.xaml;UserControls\PageUC.xaml;
 
 False
 

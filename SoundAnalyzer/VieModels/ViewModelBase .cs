@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace SoundAnalyzer {
+namespace SoundAnalyzer.ViewModels {
     class ViewModelBase : INotifyPropertyChanged {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -10,4 +10,3 @@ namespace SoundAnalyzer {
         }
     }
 }
-

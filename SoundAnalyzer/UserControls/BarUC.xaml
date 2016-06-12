@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SoundAnalyzer.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="127.333" d:DesignWidth="171.833">
+             d:DesignHeight="151.666" d:DesignWidth="233.666">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -49,8 +49,8 @@
         <Line X1="0" Y1="0" X2="1000" Y2="0" Stroke="Black" StrokeThickness="2" Grid.ColumnSpan="16" Grid.Row="8"/>
         <Line X1="0" Y1="0" X2="1000" Y2="0" Stroke="Black" StrokeThickness="2" Grid.ColumnSpan="16" Grid.Row="10"/>
         <Line X1="0" Y1="0" X2="1000" Y2="0" Stroke="Black" StrokeThickness="2" Grid.ColumnSpan="16" Grid.Row="12"/>
-        <!--<Image x:Name="image1" Source="/SoundAnalyzer;component/Images/Note.png" Grid.Column="3" HorizontalAlignment="Stretch"  Grid.Row="4" Grid.RowSpan="5"  VerticalAlignment="Stretch" Stretch="Uniform"/>-->
-        <Label x:Name="label" Content="&#9834;" Grid.Column="2" Grid.ColumnSpan="7" Grid.RowSpan="9" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="64"/>
+        <Image x:Name="image1" Source="/SoundAnalyzer;component/Images/Note.png" Grid.Column="3" HorizontalAlignment="Stretch"  Grid.Row="4" Grid.RowSpan="5"  VerticalAlignment="Stretch" Stretch="Uniform"/>
+        <!--<Label x:Name="label" Content="&#9834;" Grid.Column="3" Grid.ColumnSpan="4" Grid.RowSpan="9" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="64" Margin="14.375,-2,0.125,3"/>-->
 
     </Grid>
 </UserControl>

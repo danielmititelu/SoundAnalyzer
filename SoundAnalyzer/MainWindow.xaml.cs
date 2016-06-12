@@ -1,4 +1,5 @@
-﻿using SoundAnalyzer.UserControls;
+﻿using MusicXml;
+using SoundAnalyzer.UserControls;
 using System.Windows;
 
 namespace SoundAnalyzer {
@@ -8,7 +9,8 @@ namespace SoundAnalyzer {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
-            Content = new PageUC();
+            PagePanel.Children.Add(new PageUC());
+           // PagePanel.Children.Add(new PageUC());
         }
     }
 }

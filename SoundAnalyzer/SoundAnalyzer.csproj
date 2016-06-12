@@ -99,6 +99,9 @@
     <Compile Include="UserControls\PageUC.xaml.cs">
       <DependentUpon>PageUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Score.xaml.cs">
+      <DependentUpon>Score.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VieModels\MainUCViewModel.cs" />
     <Compile Include="Sheets\Note.cs" />
     <Compile Include="Sheets\Sheet.cs" />
@@ -115,6 +118,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\PageUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Score.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -149,6 +156,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Note.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\XMLFile1.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

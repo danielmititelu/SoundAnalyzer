@@ -11,11 +11,6 @@ namespace SoundAnalyzer.UserControls {
         public MainUC() {
             InitializeComponent();
             DataContext = viewModel;
-            //viewModel.Record();
-        }
-
-        private void RecordClick(object sender, RoutedEventArgs e) {
-            
         }
     }
 }

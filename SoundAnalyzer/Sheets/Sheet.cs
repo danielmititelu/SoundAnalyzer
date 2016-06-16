@@ -14,14 +14,14 @@ namespace SoundAnalyzer.Sheets {
 
         public double FirstNoteFreaquency() {
             var asd = pianoNotes.ElementAt(counter);
-            return note.notes[asd];
+            return Note.notes.First(n => n.Name == asd).Freaquency;
         }
 
         public double NextNoteFreaquency() {
             counter++;
             if (counter >= pianoNotes.Count) return 0;
             var asd = pianoNotes.ElementAt(counter);
-            return note.notes[asd];
+            return Note.notes.First(n => n.Name == asd).Freaquency;
         }
 
         public string CurrentNoteName() {

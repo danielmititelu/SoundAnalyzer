@@ -4,23 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SoundAnalyzer.UserControls"
-             mc:Ignorable="d" Height="29.7cm" Width="21cm">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="150"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="150"/>
-            <RowDefinition Height="150"/>
-            <RowDefinition Height="150"/>
-            <RowDefinition Height="150"/>
-        </Grid.RowDefinitions>
-        <local:BarUC Grid.Row="0" Grid.Column="1"/>
-        <local:BarUC Grid.Row="3" Grid.Column="1" Margin="0,73,0,-73"/>
-        <local:BarUC Grid.Row="3" Grid.Column="2" Margin="0,492,0,-492"/>
+             mc:Ignorable="d" Height="29.7cm" Width="21cm" Background="White">
+    <Grid Name="pageGrid">
+        <local:GrandStaffUC Grid.Row="0" Margin="1cm,88,1cm,808" />
+        <local:GrandStaffUC Grid.Row="0" Margin="1cm,352,1cm,544" />
+        <local:GrandStaffUC Grid.Row="0" Margin="38,624,1cm,272" />
+        <local:GrandStaffUC Grid.Row="0" Margin="38,856,38,40" /> 
     </Grid>
 </UserControl>

@@ -5,17 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SoundAnalyzer.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="55.579" d:DesignWidth="51.087">
+             d:DesignHeight="20" d:DesignWidth="20">
     <Grid>
-        <Ellipse Stroke="Black" Fill="Black" RenderTransformOrigin="0.5,0.5">
-            <Ellipse.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleY="4" AngleX="8"/>
-                    <RotateTransform Angle="70.447"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Ellipse.RenderTransform>
-        </Ellipse>
+        <Ellipse Stroke="Black" Fill="Black" Width="20" Height="20"/>
     </Grid>
 </UserControl>

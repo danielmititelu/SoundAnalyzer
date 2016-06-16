@@ -77,6 +77,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\GrandStaffUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\MainUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -92,6 +96,9 @@
     <Compile Include="AutoCorrelator.cs" />
     <Compile Include="UserControls\BarUC.xaml.cs">
       <DependentUpon>BarUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\GrandStaffUC.xaml.cs">
+      <DependentUpon>GrandStaffUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\NoteUC.xaml.cs">
       <DependentUpon>NoteUC.xaml</DependentUpon>

@@ -5,14 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SoundAnalyzer"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="546">
+             d:DesignHeight="300" d:DesignWidth="376.833">
     <Grid>
         <ProgressBar Value="{Binding Peak}" Maximum="1" HorizontalAlignment="Left" Height="22" Margin="27,20,0,0" VerticalAlignment="Top" Width="172"/>
-        <Button x:Name="record" Content="Record" HorizontalAlignment="Left" Margin="65,262,0,0" VerticalAlignment="Top" Width="75" Click="RecordClick"/>
-        <ComboBox ItemsSource="{Binding CaptureDevices}" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}" Margin="204,20,20,0" VerticalAlignment="Top" Height="22"/>
-        <TextBox Name="textBox" Text="{Binding Line, Mode=OneWay}" HorizontalAlignment="Left" Height="36" Margin="52,78,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" IsReadOnly="True" VerticalAlignment="Top" Width="452"/>
-        <TextBox x:Name="textBox1" Text="{Binding Power}" HorizontalAlignment="Left" Height="23" Margin="406,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="label" Content="POWER"  HorizontalAlignment="Left" Margin="339,255,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding NoteList, Mode=TwoWay}" HorizontalAlignment="Left" Height="121" Margin="52,133,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" IsReadOnly="True" VerticalAlignment="Top" Width="452"/>
+        <ComboBox ItemsSource="{Binding CaptureDevices}" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}" Margin="27,51,0,0" VerticalAlignment="Top" Height="22" HorizontalAlignment="Left" Width="213"/>
+        <TextBox Name="textBox" Text="{Binding Line, Mode=OneWay}" HorizontalAlignment="Left" Height="36" Margin="27,92,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" IsReadOnly="True" VerticalAlignment="Top" Width="322"/>
+        <TextBox x:Name="textBox1" Text="{Binding Power}" HorizontalAlignment="Left" Height="23" Margin="120,267,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label" Content="POWER"  HorizontalAlignment="Left" Margin="52,264,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding NoteList, Mode=TwoWay}" HorizontalAlignment="Left" Height="87" Margin="27,146,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" IsReadOnly="True" VerticalAlignment="Top" Width="258"/>
     </Grid>
 </UserControl>

@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="SoundAnalyzer.UserControls.GrandStaffUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SoundAnalyzer.UserControls"
+             mc:Ignorable="d" Width="19cm" Height="6cm">
+    <Grid Name="myGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" Name="A24"/>
+            <RowDefinition Height="*" Name="C24"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Line X1="0" Y1="0" X2="19cm" Y2="0" Stroke="Black" StrokeThickness="1" Grid.Row="11"/>
+        <Line X1="0" Y1="0" X2="19cm" Y2="0" Stroke="Black" StrokeThickness="1" Grid.Row="13"/>
+        <Line X1="0" Y1="0" X2="19cm" Y2="0" Stroke="Black" StrokeThickness="1" Grid.Row="15"/>
+        <Line X1="0" Y1="0" X2="19cm" Y2="0" Stroke="Black" StrokeThickness="1" Grid.Row="17"/>
+        <Line X1="0" Y1="0" X2="19cm" Y2="0" Stroke="Black" StrokeThickness="1" Grid.Row="19"/>
+
+        <Line X1="0" Y1="0" X2="19cm" Y2="0" Stroke="Black" StrokeThickness="1" Grid.Row="29"/>
+        <Line X1="0" Y1="0" X2="19cm" Y2="0" Stroke="Black" StrokeThickness="1" Grid.Row="31"/>
+        <Line X1="0" Y1="0" X2="19cm" Y2="0" Stroke="Black" StrokeThickness="1" Grid.Row="33"/>
+        <Line X1="0" Y1="0" X2="19cm" Y2="0" Stroke="Black" StrokeThickness="1" Grid.Row="35"/>
+        <Line X1="0" Y1="0" X2="19cm" Y2="0" Stroke="Black" StrokeThickness="1" Grid.Row="37"/>
+
+        <Line X1="0" Y1="0" X2="0" Y2="200" Stroke="Black" StrokeThickness="1" Grid.Row="11" Grid.RowSpan="26" Name="firstLine"/>
+        <Line X1="19cm" Y1="0" X2="19cm" Y2="200" Stroke="Black" StrokeThickness="1" Grid.Row="11" Grid.RowSpan="26"/>
+        <!--<Ellipse Grid.Row="4" Grid.RowSpan="2" Stretch="Fill" Fill="Black" Width="20" Margin="605,0,0,0" MouseLeftButtonDown="NoteMouseLeftButtonDown" MouseMove="NoteMouseMove" MouseLeftButtonUp="NoteMouseLeftButtonUp" HorizontalAlignment="Left"/>-->
+    </Grid>
+</UserControl>

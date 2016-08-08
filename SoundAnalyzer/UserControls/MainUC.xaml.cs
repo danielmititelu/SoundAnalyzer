@@ -12,5 +12,9 @@ namespace SoundAnalyzer.UserControls {
             InitializeComponent();
             DataContext = viewModel;
         }
+
+        private void fill_Click(object sender, RoutedEventArgs e) {
+            noteA4.Value = noteA4.Value == 1 ? 0 : 1;
+        }
     }
 }

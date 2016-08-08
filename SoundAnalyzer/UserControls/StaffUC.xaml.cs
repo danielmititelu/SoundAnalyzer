@@ -15,10 +15,10 @@ using System.Windows.Shapes;
 
 namespace SoundAnalyzer.UserControls {
     /// <summary>
-    /// Interaction logic for NoteUC.xaml
+    /// Interaction logic for StaffUC.xaml
     /// </summary>
-    public partial class NoteUC : UserControl {
-        public NoteUC() {
+    public partial class StaffUC : UserControl {
+        public StaffUC() {
             InitializeComponent();
         }
     }

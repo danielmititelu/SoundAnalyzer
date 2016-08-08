@@ -7,8 +7,8 @@
              mc:Ignorable="d" Width="19cm" Height="6cm">
     <Grid Name="myGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" Name="A24"/>
-            <RowDefinition Height="*" Name="C24"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>

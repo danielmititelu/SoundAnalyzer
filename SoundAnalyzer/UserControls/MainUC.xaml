@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SoundAnalyzer"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="376.833">
+             d:DesignHeight="385.833" d:DesignWidth="373.5">
     <Grid>
         <ProgressBar Value="{Binding Peak}" Maximum="1" HorizontalAlignment="Left" Height="22" Margin="27,20,0,0" VerticalAlignment="Top" Width="172"/>
         <ComboBox ItemsSource="{Binding CaptureDevices}" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}" Margin="27,51,0,0" VerticalAlignment="Top" Height="22" HorizontalAlignment="Left" Width="213"/>
@@ -13,5 +13,8 @@
         <TextBox x:Name="textBox1" Text="{Binding Power}" HorizontalAlignment="Left" Height="23" Margin="120,267,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="label" Content="POWER"  HorizontalAlignment="Left" Margin="52,264,0,0" VerticalAlignment="Top"/>
         <TextBox Text="{Binding NoteList, Mode=TwoWay}" HorizontalAlignment="Left" Height="87" Margin="27,146,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" IsReadOnly="True" VerticalAlignment="Top" Width="258"/>
+        <ProgressBar x:Name="noteA4" Maximum="1" Minimum="0" HorizontalAlignment="Left" Height="10" Margin="85,329,0,0" VerticalAlignment="Top" Width="24"/>
+        <Label x:Name="label1" Content="A4" HorizontalAlignment="Left" Margin="85,339,0,0" VerticalAlignment="Top" Height="24"/>
+        <Button x:Name="fill" Content="Fill" HorizontalAlignment="Left" Margin="238,348,0,0" VerticalAlignment="Top" Width="75" Click="fill_Click"/>
     </Grid>
 </UserControl>

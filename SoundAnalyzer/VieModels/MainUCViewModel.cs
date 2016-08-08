@@ -94,7 +94,7 @@ namespace SoundAnalyzer.ViewModels {
             }
 
             if (NotePlayed(floatBuffer.ToArray())) {
-                NoteList += " " + sheet.CurrentNoteName()+" "+Power;
+                NoteList += " " + sheet.CurrentNoteName();
                 TargetFreaquency = sheet.NextNoteFreaquency();
                 if (TargetFreaquency == 0) Reset();
             }

@@ -26,7 +26,7 @@ namespace SoundAnalyzer.UserControls {
         public void AddNote() {
             Ellipse note = new Ellipse();
             note.Fill = Brushes.Black;
-            note.Width = 20;
+            note.Width = (double)new LengthConverter().ConvertFrom("0.4cm");
             note.Stretch = Stretch.Fill;
             note.HorizontalAlignment = HorizontalAlignment.Left;
             note.Margin = new Thickness(lefMargin, 0, 0, 0);
@@ -37,6 +37,16 @@ namespace SoundAnalyzer.UserControls {
             note.MouseLeftButtonUp += NoteMouseLeftButtonUp;
             myGrid.Children.Add(note);
             lefMargin += 100;
+        }
+
+        public List<object> GetAllNotes() {
+            var notes = new List<object>();
+            foreach (var note in myGrid.Children) {
+                if (note is Ellipse) {
+                    notes.Add(note);
+                }
+            }
+            return notes;
         }
 
         private void NoteMouseLeftButtonDown(object sender, MouseButtonEventArgs e) {

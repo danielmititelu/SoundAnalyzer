@@ -94,20 +94,20 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AutoCorrelator.cs" />
+    <Compile Include="Sheets\Key.cs" />
+    <Compile Include="Sheets\NoteRepository.cs" />
     <Compile Include="UserControls\BarUC.xaml.cs">
       <DependentUpon>BarUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\GrandStaffUC.xaml.cs">
       <DependentUpon>GrandStaffUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\NoteUC.xaml.cs">
-      <DependentUpon>NoteUC.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="UserControls\NoteGenerator.cs" />
     <Compile Include="UserControls\PageUC.xaml.cs">
       <DependentUpon>PageUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Score.xaml.cs">
-      <DependentUpon>Score.xaml</DependentUpon>
+    <Compile Include="UserControls\StaffUC.xaml.cs">
+      <DependentUpon>StaffUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="VieModels\MainUCViewModel.cs" />
     <Compile Include="Sheets\Note.cs" />
@@ -120,15 +120,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UserControls\NoteUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UserControls\PageUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\Score.xaml">
+    <Page Include="UserControls\StaffUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

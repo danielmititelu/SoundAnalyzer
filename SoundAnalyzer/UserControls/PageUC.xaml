@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:SoundAnalyzer.UserControls"
              mc:Ignorable="d" Height="29.7cm" Width="21cm" Background="White">
     <Grid Name="pageGrid">
-        <local:GrandStaffUC Grid.Row="0" Margin="1cm,88,1cm,808" />
-        <local:GrandStaffUC Grid.Row="0" Margin="1cm,352,1cm,544" />
+        <local:StaffUC Grid.Row="0" Margin="38,86,38,826" />
+        <local:StaffUC Grid.Row="0" Margin="38,358,38,553" />
         <local:GrandStaffUC Grid.Row="0" Margin="38,624,1cm,272" />
         <local:GrandStaffUC Grid.Row="0" Margin="38,856,38,40" /> 
     </Grid>

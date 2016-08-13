@@ -16,50 +16,26 @@ namespace SoundAnalyzer.ViewModels {
         private string noteList;
         private int sampleRate;
         private Sheet sheet;
+        private GoertzelAlgorithm goertzelFilter;
+        private int noteA4;
 
         public IEnumerable<MMDevice> CaptureDevices { get; private set; }
         public double TargetFreaquency { get; set; }
         public double Power { get; set; }
 
-
         public MMDevice SelectedDevice {
             get { return selectedDevice; }
-            set {
-                if (selectedDevice != value) {
-                    selectedDevice = value;
-                    OnPropertyChanged("SelectedDevice");
-                    GetSampleRate(value);
-                }
-            }
+            set { if (selectedDevice != value) { selectedDevice = value; OnPropertyChanged("SelectedDevice"); GetSampleRate(value); } }
         }
 
-        public float Peak {
-            get { return peak; }
-            set {
-                if (peak != value) {
-                    peak = value;
-                    OnPropertyChanged("Peak");
-                }
-            }
-        }
-
-        public string Line {
-            get { return line; }
-            set {
-                line = value;
-                OnPropertyChanged("Line");
-            }
-        }
-
-        public string NoteList {
-            get { return noteList; }
-            set {
-                noteList = value;
-                OnPropertyChanged("NoteList");
-            }
-        }
-
+        public float Peak { get { return peak; } set { if (peak != value) { peak = value; OnPropertyChanged("Peak"); } } }
+        public string Line { get { return line; } set { line = value; OnPropertyChanged("Line"); } }
+        public string NoteList { get { return noteList; } set { noteList = value; OnPropertyChanged("NoteList"); } }
+        public int NoteA4 { get { return noteA4; } set { noteA4 = value; OnPropertyChanged("NoteA4"); } }
+        public Dictionary<string, int> notes = new Dictionary<string, int>();
+        public Dictionary<string, int> Notes { get { return notes; } set { notes = value; OnPropertyChanged("Notes"); } }
         public MainUCViewModel() {
+            AddAllNotes();
             synchronizationContext = SynchronizationContext.Current;
             var enumerator = new MMDeviceEnumerator();
             CaptureDevices = enumerator.EnumerateAudioEndPoints(DataFlow.Capture, DeviceState.Active).ToArray();
@@ -67,6 +43,14 @@ namespace SoundAnalyzer.ViewModels {
             SelectedDevice = CaptureDevices.FirstOrDefault(c => c.ID == defaultDevice.ID);
             SetMelody();
             Record();
+        }
+
+        private void AddAllNotes() {
+            var noteRepository = new NoteRepository();
+            for (int i = 1; i <= 88; i++) {
+                var key = noteRepository.GetNote(i);
+                Notes.Add(key.Name + key.Octave, 0);
+            }
         }
 
         public void Record() {
@@ -80,6 +64,7 @@ namespace SoundAnalyzer.ViewModels {
         private void GetSampleRate(MMDevice value) {
             using (var c = new WasapiCapture(value)) {
                 sampleRate = c.WaveFormat.SampleRate;
+                goertzelFilter = new GoertzelAlgorithm(sampleRate);
             }
         }
 
@@ -93,34 +78,13 @@ namespace SoundAnalyzer.ViewModels {
                 floatBuffer.Add(sample32);
             }
 
-            if (NotePlayed(floatBuffer.ToArray())) {
+            Notes = goertzelFilter.DetectAllNotesPlayed(floatBuffer);
+
+            if (goertzelFilter.NotePlayed(floatBuffer, TargetFreaquency)) {
                 NoteList += " " + sheet.CurrentNoteName();
                 TargetFreaquency = sheet.NextNoteFreaquency();
                 if (TargetFreaquency == 0) Reset();
             }
-        }
-
-        private bool NotePlayed(float[] buffer) {
-            double power = GoertzelFilter(buffer, TargetFreaquency, buffer.Length);
-            if (power > 80) return true;
-            return false;
-        }
-
-        private double GoertzelFilter(float[] samples, double targetFreaquency, int end) {
-            double sPrev = 0.0;
-            double sPrev2 = 0.0;
-            int i;
-            double normalizedfreq = targetFreaquency / sampleRate;
-            double coeff = 2 * Math.Cos(2 * Math.PI * normalizedfreq);
-            for (i = 0; i < end; i++) {
-                double s = samples[i] + coeff * sPrev - sPrev2;
-                sPrev2 = sPrev;
-                sPrev = s;
-            }
-            double power = sPrev2 * sPrev2 + sPrev * sPrev - coeff * sPrev * sPrev2;
-            Power = power;
-            OnPropertyChanged("Power");
-            return power;
         }
 
         void UpdatePeakMeter() {

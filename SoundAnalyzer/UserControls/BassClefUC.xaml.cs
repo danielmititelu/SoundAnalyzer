@@ -15,12 +15,11 @@ using System.Windows.Shapes;
 
 namespace SoundAnalyzer.UserControls {
     /// <summary>
-    /// Interaction logic for GrandStaffUC.xaml
+    /// Interaction logic for BassClefUC.xaml
     /// </summary>
-    public partial class GrandStaffUC : UserControl {
-        public GrandStaffUC() {
+    public partial class BassClefUC : UserControl {
+        public BassClefUC() {
             InitializeComponent();
         }
-
     }
 }

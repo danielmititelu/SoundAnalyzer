@@ -1,7 +1,5 @@
-﻿using MusicXml;
+﻿using SoundAnalyzer.Sheets;
 using SoundAnalyzer.ViewModels;
-using System;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace SoundAnalyzer.UserControls {
@@ -11,10 +9,15 @@ namespace SoundAnalyzer.UserControls {
         public MainUC() {
             InitializeComponent();
             DataContext = viewModel;
+            AddAllKeys();
         }
 
-        private void fill_Click(object sender, RoutedEventArgs e) {
-            noteA4.Value = noteA4.Value == 1 ? 0 : 1;
+        private void AddAllKeys() {
+            var noteRepository = new NoteRepository();
+            for (int i = 1; i <= 88; i++) {
+                var key = noteRepository.GetNote(i);
+                keys.Children.Add(new Light(key.Name + key.Octave));
+            }
         }
     }
 }

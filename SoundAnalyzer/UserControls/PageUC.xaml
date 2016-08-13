@@ -6,9 +6,11 @@
              xmlns:local="clr-namespace:SoundAnalyzer.UserControls"
              mc:Ignorable="d" Height="29.7cm" Width="21cm" Background="White">
     <Grid Name="pageGrid">
-        <local:StaffUC Grid.Row="0" Margin="38,86,38,826" />
-        <local:StaffUC Grid.Row="0" Margin="38,358,38,553" />
-        <local:GrandStaffUC Grid.Row="0" Margin="38,624,1cm,272" />
-        <local:GrandStaffUC Grid.Row="0" Margin="38,856,38,40" /> 
+        <!--<local:StaffUC Margin="38,30,38,77" Grid.RowSpan="2" />
+        <local:StaffUC Margin="1cm,158,38,21" Grid.RowSpan="2" />-->
+        <StackPanel Orientation="Vertical">
+            <local:GrandStaffUC />
+            <local:GrandStaffUC />
+        </StackPanel>
     </Grid>
 </UserControl>

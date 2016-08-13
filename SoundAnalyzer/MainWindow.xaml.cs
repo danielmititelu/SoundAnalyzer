@@ -21,35 +21,35 @@ namespace SoundAnalyzer {
             //var asd = noteRepository.PianoKeys;
         }
 
-        private List<object> GetAllNotes() {
-            var notes = new List<object>();
-            foreach (var child in PagePanel.Children) {
-                if (child is PageUC) {
-                    var newc = child as PageUC;
-                    foreach (var deeperChild in newc.pageGrid.Children) {
-                        var grandStaff = deeperChild as GrandStaffUC;
-                        notes.AddRange(grandStaff.GetAllNotes());
-                    }
-                }
-            }
-            return notes;
-        }
+        //private List<object> GetAllNotes() {
+        //    var notes = new List<object>();
+        //    foreach (var child in PagePanel.Children) {
+        //        if (child is PageUC) {
+        //            var newc = child as PageUC;
+        //            foreach (var deeperChild in newc.pageGrid.Children) {
+        //                var grandStaff = deeperChild as GrandStaffUC;
+        //                notes.AddRange(grandStaff.GetAllNotes());
+        //            }
+        //        }
+        //    }
+        //    return notes;
+        //}
 
-        private void AddNoteToPage() {
-            foreach (var child in PagePanel.Children) {
-                if (child is PageUC) {
-                    var newc = child as PageUC;
-                    foreach (var deeperChild in newc.pageGrid.Children) {
-                        var grandStaff = deeperChild as GrandStaffUC;
-                        grandStaff.AddNote();
-                        grandStaff.AddNote();
-                        grandStaff.AddNote();
-                        break;
-                    }
-                    break;
-                }
-            }
-        }
+        //private void AddNoteToPage() {
+        //    foreach (var child in PagePanel.Children) {
+        //        if (child is PageUC) {
+        //            var newc = child as PageUC;
+        //            foreach (var deeperChild in newc.pageGrid.Children) {
+        //                var grandStaff = deeperChild as GrandStaffUC;
+        //                grandStaff.AddNote();
+        //                grandStaff.AddNote();
+        //                grandStaff.AddNote();
+        //                break;
+        //            }
+        //            break;
+        //        }
+        //    }
+        //}
 
         private void playButtonClick(object sender, RoutedEventArgs e) {
             //var notes = GetAllNotes();
@@ -60,9 +60,8 @@ namespace SoundAnalyzer {
             //    notesNames += " " + Note.notes.First(n => n.Row == (int)elipse.GetValue(Grid.RowProperty)).Name;
             //}
             //dataContext.Line = notesNames;
-            var noteGeneretor = new NoteGenerator();
-
-
+            //var noteGeneretor = new NoteGenerator();
+            
         }
     }
 }

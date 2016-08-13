@@ -1,12 +1,12 @@
-﻿<UserControl x:Class="SoundAnalyzer.UserControls.GrandStaffUC"
+﻿<UserControl x:Class="SoundAnalyzer.UserControls.TrebleClefUC"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SoundAnalyzer.UserControls"
-             mc:Ignorable="d" Width="19cm" Height="12cm">
-    <StackPanel Orientation="Vertical">
-        <local:StaffUC />
-        <local:StaffUC />
-    </StackPanel>
+             mc:Ignorable="d" 
+             Height="2.8cm" Width="1.2cm">
+    <Grid>
+        <Image Source="C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\Images\TrebleClef.png"/>
+    </Grid>
 </UserControl>

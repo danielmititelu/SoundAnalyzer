@@ -77,7 +77,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\BassClefUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\GrandStaffUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Light.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -93,14 +101,23 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AutoCorrelator.cs" />
+    <Compile Include="GoertzerFilter.cs" />
     <Compile Include="Sheets\Key.cs" />
     <Compile Include="Sheets\NoteRepository.cs" />
     <Compile Include="UserControls\BarUC.xaml.cs">
       <DependentUpon>BarUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\BassClefUC.xaml.cs">
+      <DependentUpon>BassClefUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\GrandStaffUC.xaml.cs">
       <DependentUpon>GrandStaffUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Light.xaml.cs">
+      <DependentUpon>Light.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NoteUC.xaml.cs">
+      <DependentUpon>NoteUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\NoteGenerator.cs" />
     <Compile Include="UserControls\PageUC.xaml.cs">
@@ -109,10 +126,13 @@
     <Compile Include="UserControls\StaffUC.xaml.cs">
       <DependentUpon>StaffUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VieModels\MainUCViewModel.cs" />
+    <Compile Include="UserControls\TrebleClefUC.xaml.cs">
+      <DependentUpon>TrebleClefUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\MainUCViewModel.cs" />
     <Compile Include="Sheets\Note.cs" />
     <Compile Include="Sheets\Sheet.cs" />
-    <Compile Include="VieModels\ViewModelBase .cs" />
+    <Compile Include="ViewModels\ViewModelBase .cs" />
     <Compile Include="UserControls\MainUC.xaml.cs">
       <DependentUpon>MainUC.xaml</DependentUpon>
     </Compile>
@@ -120,11 +140,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\NoteUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\PageUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\StaffUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\TrebleClefUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,6 +190,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\XMLFile1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TrebleClef.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BassClef.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

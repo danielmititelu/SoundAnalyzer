@@ -12,9 +12,17 @@ namespace SoundAnalyzer.Sheets {
             GeneratePianoKeys();
         }
 
+        public Key GetNote(string noteName, int octave) {
+            return PianoKeys.Find(n => n.Name == noteName && n.Octave == octave);
+        }
+
+        public Key GetNote(int keyNumber) {
+            return PianoKeys.Find(n => n.Number == keyNumber);
+        }
+
         private void GeneratePianoKeys() {
             PianoKeys = new List<Key>();
-            var keyNames = new List<string> { "C", "C#", "D", "D#", "E", "F", " F#", " G", " G#", "A", "A#", "B" };
+            var keyNames = new List<string> { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
             int keyNumber = -8;
             for (int octave = 0; octave < 9; octave++)
                 foreach (var keyName in keyNames) {

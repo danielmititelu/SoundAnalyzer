@@ -24,7 +24,7 @@ namespace SoundAnalyzer.UserControls {
             InitializeComponent();
             LeftMargin = 1;
             InitializeNotes("Treble");
-            AddClef("Treble");
+            AddClef("Bass");
             Clef = "Treble";
             //AddNote("F1");
             //AddNote("D3");

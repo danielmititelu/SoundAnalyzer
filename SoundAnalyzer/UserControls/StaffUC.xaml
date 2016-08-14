@@ -5,38 +5,37 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SoundAnalyzer.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" Width="19cm" Height="5.6cm">
+             d:DesignHeight="300" Width="19cm" Height="4.2cm">
 
     <Grid Name="mainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
 
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
-
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
-            <RowDefinition Height="0.2cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
+            <RowDefinition Height="0.15cm"/>
         </Grid.RowDefinitions>
         <!--<Line X1="4.6cm" Y1="0" X2="5.4cm" Y2="0" Stroke="Black" StrokeThickness="1" Grid.Row="7"/>-->
 
@@ -46,8 +45,8 @@
         <Line X1="0" Y1="0" X2="19cm" Y2="0" Stroke="Black" StrokeThickness="1" Grid.Row="15"/>
         <Line X1="0" Y1="0" X2="19cm" Y2="0" Stroke="Black" StrokeThickness="1" Grid.Row="17"/>
 
-        <Line X1="0" Y1="0" X2="0" Y2="1.6cm" Stroke="Black" StrokeThickness="1" Grid.Row="9" Grid.RowSpan="26" Name="firstLine"/>
-        <Line X1="19cm" Y1="0" X2="19cm" Y2="1.6cm" Stroke="Black" StrokeThickness="1" Grid.Row="9" Grid.RowSpan="26"/>
+        <Line X1="0" Y1="0" X2="0" Y2="1.2cm" Stroke="Black" StrokeThickness="1" Grid.Row="9" Grid.RowSpan="26" />
+        <Line X1="19cm" Y1="0" X2="19cm" Y2="1.2cm" Stroke="Black" StrokeThickness="1" Grid.Row="9" Grid.RowSpan="26"/>
         <!--<local:BassClefUC Margin="10,0,0,0" Grid.Row="8" Grid.RowSpan="9" HorizontalAlignment="Left" Width="45"/>-->
         <!--<Ellipse Grid.Row="16" Grid.RowSpan="2" Stretch="Fill" Fill="Black" Width="0.4cm" Margin="20,0,0,0" HorizontalAlignment="Left"/>
             <local:Note Grid.Row="8" Grid.RowSpan="2" Margin="0.2cm,0,0,0" HorizontalAlignment="Left"/>-->

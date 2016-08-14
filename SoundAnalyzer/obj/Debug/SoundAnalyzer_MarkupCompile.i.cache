@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\App.xaml
-10691225586
+9-2125568275
 
-261187269928
+24-1092054838
 19-1796959265
-UserControls\BarUC.xaml;UserControls\BassClefUC.xaml;UserControls\GrandStaffUC.xaml;UserControls\Light.xaml;UserControls\MainUC.xaml;MainWindow.xaml;UserControls\NoteUC.xaml;UserControls\PageUC.xaml;UserControls\StaffUC.xaml;UserControls\TrebleClefUC.xaml;
+UserControls\BassClefUC.xaml;UserControls\GrandStaffUC.xaml;UserControls\Light.xaml;UserControls\MainUC.xaml;MainWindow.xaml;UserControls\NoteUC.xaml;UserControls\PageUC.xaml;UserControls\StaffUC.xaml;UserControls\TrebleClefUC.xaml;
 
-True
+False
 

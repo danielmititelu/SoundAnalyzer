@@ -73,10 +73,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="UserControls\BarUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UserControls\BassClefUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -104,9 +100,6 @@
     <Compile Include="GoertzerFilter.cs" />
     <Compile Include="Sheets\Key.cs" />
     <Compile Include="Sheets\NoteRepository.cs" />
-    <Compile Include="UserControls\BarUC.xaml.cs">
-      <DependentUpon>BarUC.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\BassClefUC.xaml.cs">
       <DependentUpon>BassClefUC.xaml</DependentUpon>
     </Compile>
@@ -119,7 +112,6 @@
     <Compile Include="UserControls\NoteUC.xaml.cs">
       <DependentUpon>NoteUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\NoteGenerator.cs" />
     <Compile Include="UserControls\PageUC.xaml.cs">
       <DependentUpon>PageUC.xaml</DependentUpon>
     </Compile>
@@ -130,7 +122,6 @@
       <DependentUpon>TrebleClefUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MainUCViewModel.cs" />
-    <Compile Include="Sheets\Note.cs" />
     <Compile Include="Sheets\Sheet.cs" />
     <Compile Include="ViewModels\ViewModelBase .cs" />
     <Compile Include="UserControls\MainUC.xaml.cs">

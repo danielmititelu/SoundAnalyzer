@@ -4,9 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SoundAnalyzer.UserControls"
-             mc:Ignorable="d" Width="19cm" Height="12cm">
-    <StackPanel Orientation="Vertical">
-        <local:StaffUC />
-        <local:StaffUC />
-    </StackPanel>
+             mc:Ignorable="d" Width="19cm" Height="8.4cm">
+    <Grid>
+        <StackPanel Name="grandStaff" Orientation="Vertical">
+        </StackPanel>
+        <Line X1="0" Y1="2.5cm" X2="0" Y2="5.6cm" Stroke="Black" StrokeThickness="1" />
+        <Line X1="19cm" Y1="2.5cm" X2="19cm" Y2="5.6cm" Stroke="Black" StrokeThickness="1"/>
+    </Grid>
 </UserControl>

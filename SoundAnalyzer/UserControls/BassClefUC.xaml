@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SoundAnalyzer.UserControls"
              mc:Ignorable="d" 
-             Height="2cm" Width="1.2cm">
+             Height="1.5cm" Width="1cm">
     <Grid>
         <Image Source="C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\Images\BassClef.png"/>
     </Grid>

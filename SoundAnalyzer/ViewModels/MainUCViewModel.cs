@@ -15,7 +15,7 @@ namespace SoundAnalyzer.ViewModels {
         private string line;
         private string noteList;
         private int sampleRate;
-        private Sheet sheet;
+        private Sheet _sheet;
         private GoertzelAlgorithm goertzelFilter;
         private int noteA4;
 
@@ -34,15 +34,22 @@ namespace SoundAnalyzer.ViewModels {
         public int NoteA4 { get { return noteA4; } set { noteA4 = value; OnPropertyChanged("NoteA4"); } }
         public Dictionary<string, int> notes = new Dictionary<string, int>();
         public Dictionary<string, int> Notes { get { return notes; } set { notes = value; OnPropertyChanged("Notes"); } }
+
         public MainUCViewModel() {
             AddAllNotes();
+            InitializeNotes();
             synchronizationContext = SynchronizationContext.Current;
             var enumerator = new MMDeviceEnumerator();
             CaptureDevices = enumerator.EnumerateAudioEndPoints(DataFlow.Capture, DeviceState.Active).ToArray();
             var defaultDevice = enumerator.GetDefaultAudioEndpoint(DataFlow.Capture, Role.Console);
             SelectedDevice = CaptureDevices.FirstOrDefault(c => c.ID == defaultDevice.ID);
-            SetMelody();
             Record();
+
+        }
+
+        private void InitializeNotes() {
+            _sheet = new Sheet(@"D:\SoundAnalyzer\Exercise.txt");
+            Line = string.Join(" ", _sheet.GetCurentNotes());
         }
 
         private void AddAllNotes() {
@@ -70,38 +77,20 @@ namespace SoundAnalyzer.ViewModels {
 
         private void CaptureOnDataAvabile(object sender, WaveInEventArgs e) {
             UpdatePeakMeter();
-
             var floatBuffer = new List<float>();
             for (int index = 0; index < e.BytesRecorded; index += 2) {
                 short sample = BitConverter.ToInt16(e.Buffer, index);
                 float sample32 = sample / (float)Int16.MaxValue;
                 floatBuffer.Add(sample32);
             }
-
             Notes = goertzelFilter.DetectAllNotesPlayed(floatBuffer);
-
-            if (goertzelFilter.NotePlayed(floatBuffer, TargetFreaquency)) {
-                NoteList += " " + sheet.CurrentNoteName();
-                TargetFreaquency = sheet.NextNoteFreaquency();
-                if (TargetFreaquency == 0) Reset();
+            if (_sheet.GetCurentNotes().Select(n => n.ToString()).All(key => Notes[key] == 1)) {
+                Line = string.Join(" ", _sheet.GetNextNotes());
             }
         }
 
         void UpdatePeakMeter() {
-            // can't access this on a different thread from the one it was created on, so get back to GUI thread
             synchronizationContext.Post(s => Peak = SelectedDevice.AudioMeterInformation.MasterPeakValue, null);
-        }
-
-        private void Reset() {
-            NoteList = "";
-            sheet.ResetCounter();
-            TargetFreaquency = sheet.FirstNoteFreaquency();
-        }
-
-        private void SetMelody() {
-            Line = "C4 D4 E4 F4";
-            sheet = new Sheet(Line);
-            TargetFreaquency = sheet.FirstNoteFreaquency();
         }
     }
 }

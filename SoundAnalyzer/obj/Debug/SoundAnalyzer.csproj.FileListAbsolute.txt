@@ -17,8 +17,6 @@ C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\Sound
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\MainUC.baml
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\bin\Debug\MusicXml.dll
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\BarUC.g.cs
-C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\BarUC.baml
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\PageUC.g.cs
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\PageUC.baml
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\bin\Debug\MahApps.Metro.dll

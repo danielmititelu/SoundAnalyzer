@@ -20,7 +20,18 @@ namespace SoundAnalyzer.UserControls {
     public partial class GrandStaffUC : UserControl {
         public GrandStaffUC() {
             InitializeComponent();
+            AddStaffs("Treble", "Bass");
+        }
+        public GrandStaffUC(string firstClef, string secondClef) {
+            InitializeComponent();
+            AddStaffs(firstClef, secondClef);
         }
 
+        private void AddStaffs(string firstClef, string secondClef) {
+            var firstStaff = new StaffUC(firstClef);
+            var secondStaff = new StaffUC(secondClef);
+            grandStaff.Children.Add(firstStaff);
+            grandStaff.Children.Add(secondStaff);
+        }
     }
 }

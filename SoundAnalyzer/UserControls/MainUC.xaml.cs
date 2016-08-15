@@ -16,7 +16,7 @@ namespace SoundAnalyzer.UserControls {
             var noteRepository = new NoteRepository();
             for (int i = 1; i <= 88; i++) {
                 var key = noteRepository.GetNote(i);
-                keys.Children.Add(new Light(key.Name + key.Octave));
+                keys.Children.Add(new LightUC(key.Name + key.Octave));
             }
         }
     }

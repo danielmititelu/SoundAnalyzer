@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SoundAnalyzer.Sheets;
 
 namespace SoundAnalyzer.UserControls {
     /// <summary>
@@ -20,16 +21,23 @@ namespace SoundAnalyzer.UserControls {
     public partial class GrandStaffUC : UserControl {
         public GrandStaffUC() {
             InitializeComponent();
-            AddStaffs("Treble", "Bass");
-        }
-        public GrandStaffUC(string firstClef, string secondClef) {
-            InitializeComponent();
-            AddStaffs(firstClef, secondClef);
+            AddStaffs("Treble", "Bass", null);
         }
 
-        private void AddStaffs(string firstClef, string secondClef) {
-            var firstStaff = new StaffUC(firstClef);
-            var secondStaff = new StaffUC(secondClef);
+        public GrandStaffUC(List<NotesGroup> noteGroup) {
+            InitializeComponent();
+            AddStaffs("Treble", "Bass", noteGroup);
+        }
+
+
+        public GrandStaffUC(string firstClef, string secondClef) {
+            InitializeComponent();
+            AddStaffs(firstClef, secondClef, null);
+        }
+
+        private void AddStaffs(string firstClef, string secondClef, List<NotesGroup> noteGroup) {
+            var firstStaff = new StaffUC(firstClef, noteGroup,1);
+            var secondStaff = new StaffUC(secondClef, noteGroup,2);
             grandStaff.Children.Add(firstStaff);
             grandStaff.Children.Add(secondStaff);
         }

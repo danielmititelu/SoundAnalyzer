@@ -9,7 +9,7 @@ namespace SoundAnalyzer.UserControls {
         public Light(string noteName) {
             InitializeComponent();
             label.Content = noteName;
-            light.SetBinding(ProgressBar.ValueProperty, $"Notes[{noteName}]");
+            light.SetBinding(ProgressBar.ValueProperty, $"Keys[{noteName}]");
         }
     }
 }

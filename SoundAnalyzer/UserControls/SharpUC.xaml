@@ -1,12 +1,12 @@
-﻿<UserControl x:Class="SoundAnalyzer.UserControls.NoteUC"
+﻿<UserControl x:Class="SoundAnalyzer.UserControls.SharpUC"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SoundAnalyzer.UserControls"
              mc:Ignorable="d" 
-             Height="0.3cm" Width="0.3cm">
+             Height="0.4cm" Width="0.4cm">
     <Grid>
-        <Ellipse Name="note" Stretch="Fill" Width="0.3cm" Height="0.3cm" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+        <Image Source="C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\Images\Sharp2.png"/>
     </Grid>
 </UserControl>

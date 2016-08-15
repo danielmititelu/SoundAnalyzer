@@ -31,32 +31,37 @@ namespace SoundAnalyzer.UserControls {
             //AddNote("G6");
             //AddNote("C#4");
             //AddNotes(new List<string> { "F1","C4"});
-            AddNotes(new List<string> { "D3","C4","C5" });
+            //AddNotes(new List<string> { "D3", "C#4", "C5" });
         }
 
 
-        public StaffUC(string clef) {
+        public StaffUC(string clef, List<NotesGroup> noteGroup, int staffNumber) {
             InitializeComponent();
             LeftMargin = 1;
             InitializeNotes(clef);
             AddClef(clef);
             Clef = clef;
-        }
-
-        public bool AddNotes(List<string> notes) {
-            LeftMargin += 1;
-            if (LeftMargin > 19) return false;
-            foreach (var note in notes) {
-                AddNote(note);
+            foreach (var group in noteGroup) {
+                if (staffNumber == 1) {
+                    AddNotes(group.FirstStaffNotes.Select(n => n.ToString()), group.Number);
+                } else if (staffNumber == 2) {
+                    AddNotes(group.SecondtaffNotes.Select(n => n.ToString()), group.Number);
+                }
             }
-            return true;
         }
 
-        private void AddNote(string keyName) {
+        public void AddNotes(IEnumerable<string> notes, int number) {
+            LeftMargin += 1;
+            foreach (var note in notes) {
+                AddNote(note, number);
+            }
+        }
+
+        private void AddNote(string keyName, int number) {
             var row = GetRow(keyName);
             if (row == _invalidValue) return;
 
-            var note = new NoteUC();
+            var note = new NoteUC(number);
             Grid.SetRowSpan(note, 2);
             Grid.SetRow(note, row);
             note.HorizontalAlignment = HorizontalAlignment.Left;
@@ -64,6 +69,17 @@ namespace SoundAnalyzer.UserControls {
             note.Margin = new Thickness(leftMargin, 0, 0, 0);
             mainGrid.Children.Add(note);
             AddHelperLines(row);
+            if (keyName.Contains("#")) { AddSharp(row); }
+        }
+
+        private void AddSharp(int row) {
+            var sharp = new SharpUC();
+            Grid.SetRowSpan(sharp, 4);
+            Grid.SetRow(sharp, row - 1);
+            sharp.HorizontalAlignment = HorizontalAlignment.Left;
+            var leftMargin = (double)lengthConverter.ConvertFrom(LeftMargin - 0.4 + "cm");
+            sharp.Margin = new Thickness(leftMargin, 0, 0, 0);
+            mainGrid.Children.Add(sharp);
         }
 
         private void AddClef(string clef) {
@@ -74,7 +90,7 @@ namespace SoundAnalyzer.UserControls {
                 bassClef.HorizontalAlignment = HorizontalAlignment.Left;
                 bassClef.Margin = new Thickness(10, 0, 0, 0);
                 mainGrid.Children.Add(bassClef);
-            } else if(clef =="Treble") {
+            } else if (clef == "Treble") {
                 var trebleClef = new TrebleClefUC();
                 Grid.SetRowSpan(trebleClef, 15);
                 Grid.SetRow(trebleClef, 7);

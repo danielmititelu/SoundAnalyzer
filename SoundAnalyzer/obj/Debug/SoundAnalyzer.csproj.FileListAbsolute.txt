@@ -27,7 +27,6 @@ C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\Sound
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\GrandStaffUC.baml
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\StaffUC.g.cs
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\StaffUC.baml
-C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\SoundAnalyzer.csprojResolveAssemblyReference.cache
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\Light.g.cs
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\Light.baml
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\NoteUC.g.cs
@@ -36,3 +35,8 @@ C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\Sound
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\TrebleClefUC.baml
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\BassClefUC.g.cs
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\BassClefUC.baml
+C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\PagesUC.g.cs
+C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\PagesUC.baml
+C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\SoundAnalyzer.csprojResolveAssemblyReference.cache
+C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\SharpUC.g.cs
+C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\SharpUC.baml

@@ -1,5 +1,5 @@
 ﻿namespace SoundAnalyzer.Sheets {
-    class Key {
+    public class Key {
         public int Number { get; set; }
         public string Name { get; set; }
         public double Freaquency { get; set; }

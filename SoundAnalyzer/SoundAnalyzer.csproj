@@ -98,8 +98,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GoertzerFilter.cs" />
+    <Compile Include="IEnumerableExtension.cs" />
     <Compile Include="Sheets\Key.cs" />
     <Compile Include="Sheets\NoteRepository.cs" />
+    <Compile Include="Sheets\NotesGroup.cs" />
     <Compile Include="UserControls\BassClefUC.xaml.cs">
       <DependentUpon>BassClefUC.xaml</DependentUpon>
     </Compile>
@@ -112,8 +114,14 @@
     <Compile Include="UserControls\NoteUC.xaml.cs">
       <DependentUpon>NoteUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\PagesUC.xaml.cs">
+      <DependentUpon>PagesUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\PageUC.xaml.cs">
       <DependentUpon>PageUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SharpUC.xaml.cs">
+      <DependentUpon>SharpUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\StaffUC.xaml.cs">
       <DependentUpon>StaffUC.xaml</DependentUpon>
@@ -135,7 +143,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\PagesUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\PageUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SharpUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -187,6 +203,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\BassClef.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sharp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sharp1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sharp2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

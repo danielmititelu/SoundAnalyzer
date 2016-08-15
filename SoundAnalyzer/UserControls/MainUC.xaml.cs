@@ -4,11 +4,11 @@ using System.Windows.Controls;
 
 namespace SoundAnalyzer.UserControls {
     public partial class MainUC : UserControl {
-        MainUCViewModel viewModel = new MainUCViewModel();
+        //MainUCViewModel viewModel = new MainUCViewModel();
 
         public MainUC() {
             InitializeComponent();
-            DataContext = viewModel;
+            //DataContext = viewModel;
             AddAllKeys();
         }
 

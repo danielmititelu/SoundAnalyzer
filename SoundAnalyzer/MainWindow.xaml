@@ -12,12 +12,14 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <!--<ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel Name="PagePanel" Width="21cm" >
-                <!--<UserControls:PageUC HorizontalAlignment="Left" Margin="21,19,0,-172" VerticalAlignment="Top" Height="1122" Width="793"/>-->
+                -->
+        <!--<UserControls:PageUC HorizontalAlignment="Left" Margin="21,19,0,-172" VerticalAlignment="Top" Height="1122" Width="793"/>-->
+        <!--
             </StackPanel>
-        </ScrollViewer>
+        </ScrollViewer>-->
+        <UserControls:PagesUC NotesGroup="{Binding Notes}"/>
         <UserControls:MainUC Grid.Column="1" x:Name="BackEnd" Margin="0,0,0,71"/>
-        <Button x:Name="button" Content="Play&#xD;&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="151" Grid.Column="1" Margin="114,922,0,0" Height="24" Click="playButtonClick"/>
     </Grid>
 </Window>

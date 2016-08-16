@@ -27,8 +27,6 @@ C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\Sound
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\GrandStaffUC.baml
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\StaffUC.g.cs
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\StaffUC.baml
-C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\Light.g.cs
-C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\Light.baml
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\NoteUC.g.cs
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\NoteUC.baml
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\TrebleClefUC.g.cs
@@ -40,3 +38,5 @@ C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\Sound
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\SoundAnalyzer.csprojResolveAssemblyReference.cache
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\SharpUC.g.cs
 C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\SharpUC.baml
+C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\LightUC.g.cs
+C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\obj\Debug\UserControls\LightUC.baml

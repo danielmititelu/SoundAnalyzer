@@ -29,7 +29,7 @@ namespace SoundAnalyzer.UserControls {
 
         private void OnValueChanged(DependencyPropertyChangedEventArgs e) {
             var notesGroup = (List<NotesGroup>)e.NewValue;
-
+            PagePanel.Children.Clear();
             foreach (var group in notesGroup.GroupBy(_notesPerPage)) {
                 var page = new PageUC(group.ToList());
                 PagePanel.Children.Add(page);

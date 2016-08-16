@@ -6,11 +6,13 @@ using System.Linq;
 namespace SoundAnalyzer {
     class GoertzelAlgorithm {
         public int SampleRate { get; set; }
-        NoteRepository noteRepository;
+        public int Sensibility { get; set; }
+        private NoteRepository _noteRepository;
 
         public GoertzelAlgorithm(int sampleRate) {
-            noteRepository = new NoteRepository();
+            _noteRepository = new NoteRepository();
             SampleRate = sampleRate;
+            Sensibility = 3000;
         }
 
         public bool NotePlayed(List<float> buffer, double targetFreaquency) {
@@ -18,29 +20,38 @@ namespace SoundAnalyzer {
         }
 
         public bool NotePlayed(List<float> buffer, string noteName, int octave) {
-            var note = noteRepository.GetNote(noteName, octave);
+            var note = _noteRepository.GetNote(noteName, octave);
             return FrequencyExists(buffer, note.Freaquency);
         }
 
         public bool NotePlayed(List<float> buffer, int keyNumber) {
-            var note = noteRepository.GetNote(keyNumber);
+            var note = _noteRepository.GetNote(keyNumber);
             return FrequencyExists(buffer, note.Freaquency);
         }
 
         public Dictionary<string, int> DetectAllNotesPlayed(List<float> buffer) {
             var notesPlayed = new Dictionary<string, int>();
             for (int i = 1; i <= 88; i++) {
-                var note = noteRepository.GetNote(i);
+                var note = _noteRepository.GetNote(i);
                 var exists = NotePlayed(buffer, note.Freaquency);
                 var value = exists ? 1 : 0;
-                notesPlayed.Add(note.Name + note.Octave, value);
+                notesPlayed.Add(note.ToString(), value);
             }
             return notesPlayed;
         }
 
+        public bool NotesPlayed(List<float> buffer, IEnumerable<Key> notes) {
+            foreach (var note in notes) {
+                if (!FrequencyExists(buffer,note.Freaquency)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         private bool FrequencyExists(List<float> buffer, double targetFreaquency) {
             var power = GoertzelFilter(buffer, targetFreaquency, buffer.Count);
-            if (power > 1000) return true;
+            if (power > Sensibility) return true;
             return false;
         }
 

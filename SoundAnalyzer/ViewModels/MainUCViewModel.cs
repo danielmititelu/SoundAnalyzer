@@ -6,65 +6,65 @@ using System;
 using NAudio.Wave;
 using SoundAnalyzer.Sheets;
 using System.Windows.Media;
-using System.Windows;
 
 namespace SoundAnalyzer.ViewModels {
     class MainUCViewModel : ViewModelBase {
-        private readonly SynchronizationContext synchronizationContext;
-        private MMDevice selectedDevice;
-        private WasapiCapture capture;
-        private float peak;
-        private string line;
-        private string noteList;
-        private int sampleRate;
+        private readonly SynchronizationContext _synchronizationContext;
+        private MMDevice _selectedDevice;
+        private WasapiCapture _capture;
+        private float _peak;
+        private string _line;
+        private int _sampleRate;
         private Sheet _sheet;
-        private GoertzelAlgorithm goertzelFilter;
-        private int noteA4;
-        public Dictionary<string, int> key = new Dictionary<string, int>();
+        private GoertzelAlgorithm _goertzelFilter;
+        private Dictionary<string, int> _keys = new Dictionary<string, int>();
         private List<NotesGroup> notes;
+        private string _path;
+        private int _sensibility;
 
         public IEnumerable<MMDevice> CaptureDevices { get; private set; }
         public double TargetFreaquency { get; set; }
         public double Power { get; set; }
 
+
         public MMDevice SelectedDevice {
-            get { return selectedDevice; }
-            set { if (selectedDevice != value) { selectedDevice = value; OnPropertyChanged("SelectedDevice"); GetSampleRate(value); } }
+            get { return _selectedDevice; }
+            set { if (_selectedDevice != value) { _selectedDevice = value; OnPropertyChanged("SelectedDevice"); GetSampleRate(value); } }
         }
 
         public float Peak {
-            get { return peak; }
-            set { if (peak != value) { peak = value; OnPropertyChanged("Peak"); } }
+            get { return _peak; }
+            set { if (_peak != value) { _peak = value; OnPropertyChanged("Peak"); } }
         }
 
         public string Line {
-            get { return line; }
-            set { line = value; OnPropertyChanged("Line"); }
-        }
-
-        public string NoteList {
-            get { return noteList; }
-            set { noteList = value; OnPropertyChanged("NoteList"); }
-        }
-
-        public int NoteA4 {
-            get { return noteA4; }
-            set { noteA4 = value; OnPropertyChanged("NoteA4"); }
+            get { return _line; }
+            set { _line = value; OnPropertyChanged("Line"); }
         }
 
         public Dictionary<string, int> Keys {
-            get { return key; }
-            set { key = value; OnPropertyChanged("Keys"); }
+            get { return _keys; }
+            set { _keys = value; OnPropertyChanged("Keys"); }
         }
-
 
         public List<NotesGroup> Notes {
             get { return notes; }
             set { notes = value; OnPropertyChanged("Notes"); }
         }
 
+        public string Path {
+            get { return _path; }
+            set { _path = value; OnPropertyChanged("Path"); InitializeNotes(Path); }
+        }
+
+
+        public int Sensibility {
+            get { return _sensibility; }
+            set { _sensibility = value; _goertzelFilter.Sensibility = value; }
+        }
+
         public MainUCViewModel() {
-            synchronizationContext = SynchronizationContext.Current;
+            _synchronizationContext = SynchronizationContext.Current;
             AddAllNotes();
             InitializeNotes();
             var enumerator = new MMDeviceEnumerator();
@@ -72,11 +72,17 @@ namespace SoundAnalyzer.ViewModels {
             var defaultDevice = enumerator.GetDefaultAudioEndpoint(DataFlow.Capture, Role.Console);
             SelectedDevice = CaptureDevices.FirstOrDefault(c => c.ID == defaultDevice.ID);
             Record();
-
         }
 
         private void InitializeNotes() {
-            _sheet = new Sheet(@"D:\SoundAnalyzer\Exercise.txt");
+            _sheet = new Sheet(@"D:\SoundAnalyzer\MultipleNotes.txt");
+            Notes = _sheet.Notes;
+            Line = _sheet.GetCurrentNotesAsString();
+            ChangeNotesColor();
+        }
+
+        private void InitializeNotes(string path) {
+            _sheet = new Sheet(Path);
             Notes = _sheet.Notes;
             Line = _sheet.GetCurrentNotesAsString();
             ChangeNotesColor();
@@ -91,31 +97,30 @@ namespace SoundAnalyzer.ViewModels {
         }
 
         public void Record() {
-            capture = new WasapiCapture(selectedDevice);
+            _capture = new WasapiCapture(_selectedDevice);
             WaveFormat myformat = new WaveFormat(44100, 16, 2);
-            capture.WaveFormat = myformat;
-            capture.DataAvailable += CaptureOnDataAvabile;
-            capture.StartRecording();
+            _capture.WaveFormat = myformat;
+            _capture.DataAvailable += CaptureOnDataAvabile;
+            _capture.StartRecording();
         }
 
         private void GetSampleRate(MMDevice value) {
             using (var c = new WasapiCapture(value)) {
-                sampleRate = c.WaveFormat.SampleRate;
-                goertzelFilter = new GoertzelAlgorithm(sampleRate);
+                _sampleRate = c.WaveFormat.SampleRate;
+                _goertzelFilter = new GoertzelAlgorithm(_sampleRate);
             }
         }
 
         private void CaptureOnDataAvabile(object sender, WaveInEventArgs e) {
             UpdatePeakMeter();
-            var floatBuffer = new List<float>();
+            var buffer = new List<float>();
             for (int index = 0; index < e.BytesRecorded; index += 2) {
                 short sample = BitConverter.ToInt16(e.Buffer, index);
                 float sample32 = sample / (float)Int16.MaxValue;
-                floatBuffer.Add(sample32);
+                buffer.Add(sample32);
             }
 
-            Keys = goertzelFilter.DetectAllNotesPlayed(floatBuffer);
-            if (_sheet.GetCurentNotes().Select(n => n.ToString()).All(key => Keys[key] == 1)) {
+            if (_goertzelFilter.NotesPlayed(buffer, _sheet.GetCurentNotes())) {
                 ChangeNotesColor();
                 _sheet.IncreaseCounter();
                 Line = _sheet.GetCurrentNotesAsString();
@@ -123,13 +128,13 @@ namespace SoundAnalyzer.ViewModels {
         }
 
         private void ChangeNotesColor() {
-            synchronizationContext.Post(s => Notes.ForEach(n => n.Color = new SolidColorBrush(Colors.Black)), null);
-            synchronizationContext.Post(s => Notes[_sheet.GetCurentCounter()].Color = new SolidColorBrush(Colors.Green), null);
-            synchronizationContext.Post(s => OnPropertyChanged("Notes"), null);
+            _synchronizationContext.Post(s => Notes.ForEach(n => n.Color = new SolidColorBrush(Colors.Black)), null);
+            _synchronizationContext.Post(s => Notes[_sheet.GetCurentCounter()].Color = new SolidColorBrush(Colors.Green), null);
+            _synchronizationContext.Post(s => OnPropertyChanged("Notes"), null);
         }
 
-        void UpdatePeakMeter() {
-            synchronizationContext.Post(s => Peak = SelectedDevice.AudioMeterInformation.MasterPeakValue, null);
+        private void UpdatePeakMeter() {
+            _synchronizationContext.Post(s => Peak = SelectedDevice.AudioMeterInformation.MasterPeakValue, null);
         }
     }
 }

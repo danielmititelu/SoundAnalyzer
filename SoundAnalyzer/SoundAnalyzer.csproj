@@ -81,7 +81,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\Light.xaml">
+    <Page Include="UserControls\LightUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -108,8 +108,8 @@
     <Compile Include="UserControls\GrandStaffUC.xaml.cs">
       <DependentUpon>GrandStaffUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Light.xaml.cs">
-      <DependentUpon>Light.xaml</DependentUpon>
+    <Compile Include="UserControls\LightUC.xaml.cs">
+      <DependentUpon>LightUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\NoteUC.xaml.cs">
       <DependentUpon>NoteUC.xaml</DependentUpon>

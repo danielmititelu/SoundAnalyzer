@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 
 namespace SoundAnalyzer.Sheets {
-    class NoteRepository {
+   internal class NoteRepository {
         public List<Key> PianoKeys { get; set; }
-        public int _numberOfPianoKeys = 88;
-        public double _A4Freaquency = 440;
-        public int _A4Number = 49;
+        public int NumberOfPianoKeys = 88;
+        public double A4Freaquency = 440;
+        public int A4Number = 49;
 
         public NoteRepository() {
             GeneratePianoKeys();
@@ -37,7 +37,7 @@ namespace SoundAnalyzer.Sheets {
         }
 
         private double GetFreaquency(int keyNumber) {
-            return (Math.Pow(2, (double)(keyNumber - _A4Number) / 12)) * _A4Freaquency;
+            return (Math.Pow(2, (double)(keyNumber - A4Number) / 12)) * A4Freaquency;
         }
     }
 }

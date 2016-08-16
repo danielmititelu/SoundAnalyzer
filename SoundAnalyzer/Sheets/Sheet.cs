@@ -4,8 +4,8 @@ using System.Linq;
 using System.Windows.Media;
 
 namespace SoundAnalyzer.Sheets {
-    class Sheet {
-        NoteRepository noteRepository = new NoteRepository();
+    internal class Sheet {
+        private NoteRepository _noteRepository = new NoteRepository();
         public List<NotesGroup> Notes { get; set; }
         public int Counter { get; set; }
 
@@ -26,7 +26,7 @@ namespace SoundAnalyzer.Sheets {
                     foreach (var note in firstStaffNotes) {
                         var noteName = note.Length == 3 ? note.Substring(0, 2) : note.Substring(0, 1);
                         var octave = int.Parse(note.Last().ToString());
-                        noteGroup.FirstStaffNotes.Add(noteRepository.GetNote(noteName, octave));
+                        noteGroup.FirstStaffNotes.Add(_noteRepository.GetNote(noteName, octave));
                     }
                 }
 
@@ -35,7 +35,7 @@ namespace SoundAnalyzer.Sheets {
                     foreach (var note in secondStaffNotes) {
                         var noteName = note.Length == 3 ? note.Substring(0, 2) : note.Substring(0, 1);
                         var octave = int.Parse(note.Last().ToString());
-                        noteGroup.SecondtaffNotes.Add(noteRepository.GetNote(noteName, octave));
+                        noteGroup.SecondtaffNotes.Add(_noteRepository.GetNote(noteName, octave));
                     }
                 }
 

@@ -9,16 +9,16 @@ using System.Linq;
 
 namespace SoundAnalyzer.UserControls {
     public partial class StaffUC : UserControl {
-        LengthConverter lengthConverter = new LengthConverter();
+        LengthConverter _lengthConverter = new LengthConverter();
         public double LeftMargin { get; set; }
         public string Clef { get; set; }
-        Dictionary<int, Key> _columnKey = new Dictionary<int, Key>();
-        NoteRepository noteRepository = new NoteRepository();
-        private int _firstNoteBassClef = 9;
-        private int _lastNoteBassClef = 51;
-        private int _firstNoteTrebleClef = 30;
-        private int _lastNoteTrebleClef = 71;
-        private int _invalidValue = 999;
+        private Dictionary<int, Key> _columnKey = new Dictionary<int, Key>();
+        private NoteRepository _noteRepository = new NoteRepository();
+        private const int FirstNoteBassClef = 9;
+        private const int LastNoteBassClef = 51;
+        private const int FirstNoteTrebleClef = 30;
+        private const int LastNoteTrebleClef = 71;
+        private const int InvalidValue = 999;
 
         public StaffUC() {
             InitializeComponent();
@@ -26,14 +26,7 @@ namespace SoundAnalyzer.UserControls {
             InitializeNotes("Treble");
             AddClef("Bass");
             Clef = "Treble";
-            //AddNote("F1");
-            //AddNote("D3");
-            //AddNote("G6");
-            //AddNote("C#4");
-            //AddNotes(new List<string> { "F1","C4"});
-            //AddNotes(new List<string> { "D3", "C#4", "C5" });
         }
-
 
         public StaffUC(string clef, List<NotesGroup> noteGroup, int staffNumber) {
             InitializeComponent();
@@ -59,13 +52,13 @@ namespace SoundAnalyzer.UserControls {
 
         private void AddNote(string keyName, int number) {
             var row = GetRow(keyName);
-            if (row == _invalidValue) return;
+            if (row == InvalidValue) return;
 
             var note = new NoteUC(number);
             Grid.SetRowSpan(note, 2);
             Grid.SetRow(note, row);
             note.HorizontalAlignment = HorizontalAlignment.Left;
-            var leftMargin = (double)lengthConverter.ConvertFrom(LeftMargin + "cm");
+            var leftMargin = (double)_lengthConverter.ConvertFrom(LeftMargin + "cm");
             note.Margin = new Thickness(leftMargin, 0, 0, 0);
             mainGrid.Children.Add(note);
             AddHelperLines(row);
@@ -77,7 +70,7 @@ namespace SoundAnalyzer.UserControls {
             Grid.SetRowSpan(sharp, 4);
             Grid.SetRow(sharp, row - 1);
             sharp.HorizontalAlignment = HorizontalAlignment.Left;
-            var leftMargin = (double)lengthConverter.ConvertFrom(LeftMargin - 0.4 + "cm");
+            var leftMargin = (double)_lengthConverter.ConvertFrom(LeftMargin - 0.4 + "cm");
             sharp.Margin = new Thickness(leftMargin, 0, 0, 0);
             mainGrid.Children.Add(sharp);
         }
@@ -104,13 +97,13 @@ namespace SoundAnalyzer.UserControls {
             var firstNote = 0;
             var lastNote = 0;
             if (clef == "Bass") {
-                firstNote = _firstNoteBassClef;
-                lastNote = _lastNoteBassClef;
+                firstNote = FirstNoteBassClef;
+                lastNote = LastNoteBassClef;
             } else if (clef == "Treble") {
-                firstNote = _firstNoteTrebleClef;
-                lastNote = _lastNoteTrebleClef;
+                firstNote = FirstNoteTrebleClef;
+                lastNote = LastNoteTrebleClef;
             }
-            var keys = noteRepository.PianoKeys.FindAll(k => !k.Name.Contains("#") && k.Number >= firstNote && k.Number <= lastNote)
+            var keys = _noteRepository.PianoKeys.FindAll(k => !k.Name.Contains("#") && k.Number >= firstNote && k.Number <= lastNote)
                        .OrderByDescending(k => k.Number);
             int column = 0;
             foreach (var key in keys) {
@@ -125,7 +118,7 @@ namespace SoundAnalyzer.UserControls {
             var note = _columnKey.FirstOrDefault(k => k.Value.Name == name && k.Value.Octave == octave);
             if (note.Value == null) {
                 Console.WriteLine($"Key {keyName} can't be represented on {Clef} clef");
-                return _invalidValue;
+                return InvalidValue;
             }
             return note.Key;
         }
@@ -143,12 +136,13 @@ namespace SoundAnalyzer.UserControls {
         }
 
         private void AddHelperLine(int row) {
-            Line helperLine = new Line();
+            Line helperLine = new Line {
+                X1 = (double)_lengthConverter.ConvertFrom((LeftMargin - 0.2) + "cm"),
+                X2 = (double)_lengthConverter.ConvertFrom((LeftMargin + 0.6) + "cm"),
+                Y1 = 0,
+                Y2 = 0
+            };
             Grid.SetRow(helperLine, row);
-            helperLine.X1 = (double)lengthConverter.ConvertFrom((LeftMargin - 0.2) + "cm");
-            helperLine.X2 = (double)lengthConverter.ConvertFrom((LeftMargin + 0.6) + "cm");
-            helperLine.Y1 = 0;
-            helperLine.Y2 = 0;
             helperLine.SetValue(Shape.StrokeThicknessProperty, (double)1);
             helperLine.Stroke = Brushes.Black;
             mainGrid.Children.Add(helperLine);

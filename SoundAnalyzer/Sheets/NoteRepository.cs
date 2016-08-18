@@ -7,6 +7,7 @@ namespace SoundAnalyzer.Sheets {
         public int NumberOfPianoKeys = 88;
         public double A4Freaquency = 440;
         public int A4Number = 49;
+        private int NumberOfMissingNotesInFirstOctave = -8;
 
         public NoteRepository() {
             GeneratePianoKeys();
@@ -23,7 +24,7 @@ namespace SoundAnalyzer.Sheets {
         private void GeneratePianoKeys() {
             PianoKeys = new List<Key>();
             var keyNames = new List<string> { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
-            var keyNumber = -8;
+            var keyNumber = NumberOfMissingNotesInFirstOctave;
             for (var octave = 0; octave < 9; octave++)
                 foreach (var keyName in keyNames) {
                     PianoKeys.Add(new Key {

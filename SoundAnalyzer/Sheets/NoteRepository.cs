@@ -23,8 +23,8 @@ namespace SoundAnalyzer.Sheets {
         private void GeneratePianoKeys() {
             PianoKeys = new List<Key>();
             var keyNames = new List<string> { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
-            int keyNumber = -8;
-            for (int octave = 0; octave < 9; octave++)
+            var keyNumber = -8;
+            for (var octave = 0; octave < 9; octave++)
                 foreach (var keyName in keyNames) {
                     PianoKeys.Add(new Key {
                         Number = keyNumber,

@@ -23,7 +23,7 @@ namespace SoundAnalyzer.UserControls {
         }
 
         private static void OnValueChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e) {
-            PagesUC pagesUC = dependencyObject as PagesUC;
+            var pagesUC = dependencyObject as PagesUC;
             pagesUC.OnValueChanged(e);
         }
 

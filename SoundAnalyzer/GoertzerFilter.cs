@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace SoundAnalyzer {
-    class GoertzelAlgorithm {
+    internal class GoertzelAlgorithm {
         public int SampleRate { get; set; }
         public int Sensibility { get; set; }
         private NoteRepository _noteRepository;
@@ -31,7 +31,7 @@ namespace SoundAnalyzer {
 
         public Dictionary<string, int> DetectAllNotesPlayed(List<float> buffer) {
             var notesPlayed = new Dictionary<string, int>();
-            for (int i = 1; i <= 88; i++) {
+            for (var i = 1; i <= 88; i++) {
                 var note = _noteRepository.GetNote(i);
                 var exists = NotePlayed(buffer, note.Freaquency);
                 var value = exists ? 1 : 0;

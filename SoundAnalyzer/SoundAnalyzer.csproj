@@ -214,10 +214,10 @@
     <Resource Include="Images\Sharp2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\ete.txt" />
-    <Resource Include="Resources\Exercise.txt" />
-    <Resource Include="Resources\MultipleNotes.txt" />
-    <Resource Include="Resources\Test.txt" />
+    <Resource Include="Examples\ete.txt" />
+    <Resource Include="Examples\Exercise.txt" />
+    <Resource Include="Examples\MultipleNotes.txt" />
+    <Resource Include="Examples\Test.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

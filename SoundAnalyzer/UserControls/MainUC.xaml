@@ -8,7 +8,7 @@
              d:DesignHeight="614.5" d:DesignWidth="378.167">
     <Grid>
         <ProgressBar Value="{Binding Peak}" Maximum="1" HorizontalAlignment="Left" Height="22" Margin="27,20,0,0" VerticalAlignment="Top" Width="172"/>
-        <ComboBox ItemsSource="{Binding CaptureDevices}" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}" Margin="27,51,0,0" VerticalAlignment="Top" Height="22" HorizontalAlignment="Left" Width="213"/>
+        <ComboBox ItemsSource="{Binding CaptureDevices.ProductName}" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}" Margin="27,51,0,0" VerticalAlignment="Top" Height="22" HorizontalAlignment="Left" Width="213"/>
         <TextBox Name="textBox" Text="{Binding Line, Mode=OneWay}" HorizontalAlignment="Left" Height="36" Margin="27,92,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" IsReadOnly="True" VerticalAlignment="Top" Width="322"/>
         <WrapPanel x:Name="keys" HorizontalAlignment="Left" Height="275" Margin="6,329,0,0" Orientation="Horizontal" VerticalAlignment="Top" Width="362"/>
         <Button x:Name="button" Content="Load file" HorizontalAlignment="Left" Margin="27,145,0,0" VerticalAlignment="Top" Width="75" Click="LoadFileClick"/>

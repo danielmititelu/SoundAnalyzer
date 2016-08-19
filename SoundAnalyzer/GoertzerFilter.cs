@@ -12,7 +12,7 @@ namespace SoundAnalyzer {
         public GoertzelAlgorithm(int sampleRate) {
             _noteRepository = new NoteRepository();
             SampleRate = sampleRate;
-            Sensibility = 3000;
+            Sensibility = 80;
         }
 
         public bool NotePlayed(List<float> buffer, double targetFreaquency) {

@@ -5,15 +5,27 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SoundAnalyzer"
              mc:Ignorable="d" 
-             d:DesignHeight="614.5" d:DesignWidth="378.167">
+             d:DesignHeight="742.478" d:DesignWidth="439.816">
     <Grid>
-        <ProgressBar Value="{Binding Peak}" Maximum="1" HorizontalAlignment="Left" Height="22" Margin="27,20,0,0" VerticalAlignment="Top" Width="172"/>
-        <ComboBox ItemsSource="{Binding CaptureDevices.ProductName}" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}" Margin="27,51,0,0" VerticalAlignment="Top" Height="22" HorizontalAlignment="Left" Width="213"/>
-        <TextBox Name="textBox" Text="{Binding Line, Mode=OneWay}" HorizontalAlignment="Left" Height="36" Margin="27,92,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" IsReadOnly="True" VerticalAlignment="Top" Width="322"/>
-        <WrapPanel x:Name="keys" HorizontalAlignment="Left" Height="275" Margin="6,329,0,0" Orientation="Horizontal" VerticalAlignment="Top" Width="362"/>
-        <Button x:Name="button" Content="Load file" HorizontalAlignment="Left" Margin="27,145,0,0" VerticalAlignment="Top" Width="75" Click="LoadFileClick"/>
-        <TextBox x:Name="path" HorizontalAlignment="Left" Height="23" Margin="120,145,0,0" TextWrapping="Wrap" IsReadOnly="True" VerticalAlignment="Top" Width="229"/>
-        <Label x:Name="label" Content="Sensibility" HorizontalAlignment="Left" Margin="27,186,0,0" VerticalAlignment="Top" Width="75"/>
-        <Slider x:Name="sensibility" HorizontalAlignment="Left" Value="{Binding Sensibility}" Margin="120,196,0,0" VerticalAlignment="Top" Width="229" Minimum="10" Maximum="9000"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="59*"/>
+            <RowDefinition Height="67*"/>
+            <RowDefinition Height="81*"/>
+            <RowDefinition Height="57*"/>
+            <RowDefinition Height="81*"/>
+            <RowDefinition Height="397*"/>
+        </Grid.RowDefinitions>
+        <ProgressBar Value="{Binding Peak}" Maximum="1" HorizontalAlignment="Left" Height="22" Margin="27,34,0,0" VerticalAlignment="Top" Width="172"/>
+        <ComboBox ItemsSource="{Binding CaptureDevices}" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}" Margin="27,35,0,0" VerticalAlignment="Top" Height="22" HorizontalAlignment="Left" Width="213" Grid.Row="1"/>
+        <TextBox Name="textBox" Text="{Binding Line, Mode=OneWay}" HorizontalAlignment="Left" Height="36" Margin="27,35,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" IsReadOnly="True" VerticalAlignment="Top" Width="322" Grid.Row="2"/>
+        <WrapPanel x:Name="keys" HorizontalAlignment="Center" Height="387" Orientation="Horizontal" VerticalAlignment="Top"  Width="352" Grid.Row="5" Margin="52,0,36,0"/>
+        <Button x:Name="button" Content="Load file" HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top" Width="75" Click="LoadFileClick" Grid.Row="3" Height="22"/>
+        <TextBox x:Name="path" HorizontalAlignment="Left" Height="23" Margin="120,10,0,0" TextWrapping="Wrap" IsReadOnly="True" VerticalAlignment="Top" Width="229" Grid.Row="3"/>
+        <Label x:Name="label" Content="Sensibility" HorizontalAlignment="Left" Margin="27,21,0,0" VerticalAlignment="Top" Width="75" Grid.Row="4" Height="26"/>
+        <Slider x:Name="sensibility" HorizontalAlignment="Left" Value="{Binding Sensibility}" Margin="102,25,0,0" VerticalAlignment="Top" Width="229" Minimum="10" Maximum="9000" Grid.Row="4" Height="22"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="336,20,0,0" TextWrapping="Wrap" Text="{Binding Sensibility}" VerticalAlignment="Top" Width="76" Grid.Row="4"/>
+        <Label Content="Note" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.989,4.972" Height="28" Width="144" Margin="27,5,0,0" Grid.Row="2"/>
+        <Label Content="Microphone Level" HorizontalAlignment="Left" Margin="27,2,0,0" VerticalAlignment="Top" Height="27" Width="151"/>
+        <Label Content="Input device" HorizontalAlignment="Left" Margin="27,2,0,0" Grid.Row="1" VerticalAlignment="Top" Height="28" Width="103"/>
     </Grid>
 </UserControl>

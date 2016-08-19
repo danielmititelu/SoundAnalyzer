@@ -7,6 +7,6 @@
              mc:Ignorable="d" 
              Height="1.5cm" Width="1cm">
     <Grid>
-        <Image Source="C:\Users\DumitruDaniel\documents\visual studio 2015\Projects\SoundAnalyzer\SoundAnalyzer\Images\BassClef.png"/>
+        <Image Source="/Images/BassClef.png"/>
     </Grid>
 </UserControl>

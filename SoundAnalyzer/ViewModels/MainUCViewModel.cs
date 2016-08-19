@@ -5,6 +5,7 @@ using System;
 using NAudio.Wave;
 using SoundAnalyzer.Sheets;
 using System.Windows.Media;
+using NAudio.CoreAudioApi;
 
 namespace SoundAnalyzer.ViewModels {
     class MainUCViewModel : ViewModelBase {
@@ -17,9 +18,10 @@ namespace SoundAnalyzer.ViewModels {
         private Sheet _sheet;
         private GoertzelAlgorithm _goertzelFilter;
         private Dictionary<string, int> _keys = new Dictionary<string, int>();
-        private List<NotesGroup> notes;
+        private List<NotesGroup> _notes;
         private string _path;
         private int _sensibility;
+        private MMDevice _defaultDevice = new MMDeviceEnumerator().GetDefaultAudioEndpoint(DataFlow.Capture, Role.Console);
 
         public IEnumerable<string> CaptureDevices { get; private set; }
         public List<WaveInCapabilities> CaptureDevicesMetadata { get; private set; }
@@ -51,8 +53,8 @@ namespace SoundAnalyzer.ViewModels {
         }
 
         public List<NotesGroup> Notes {
-            get { return notes; }
-            set { notes = value; OnPropertyChanged("Notes"); }
+            get { return _notes; }
+            set { _notes = value; OnPropertyChanged("Notes"); }
         }
 
         public string Path {
@@ -63,7 +65,7 @@ namespace SoundAnalyzer.ViewModels {
 
         public int Sensibility {
             get { return _sensibility; }
-            set { _sensibility = value; _goertzelFilter.Sensibility = value; }
+            set { _sensibility = value; OnPropertyChanged("Sensibility"); _goertzelFilter.Sensibility = value; }
         }
 
         public MainUCViewModel() {
@@ -71,7 +73,7 @@ namespace SoundAnalyzer.ViewModels {
             AddAllNotes();
             InitializeNotes();
             GetRecordingDevices();
-
+            Sensibility = _goertzelFilter.Sensibility;
         }
 
         private void GetRecordingDevices() {
@@ -115,8 +117,8 @@ namespace SoundAnalyzer.ViewModels {
             _waveIn = new WaveIn();
             var captureDevice = CaptureDevicesMetadata.Find(c => c.ProductName == SelectedDevice);
             _waveIn.DeviceNumber = CaptureDevicesMetadata.IndexOf(captureDevice);
-            //WaveFormat myformat = new WaveFormat(44100, 16, 2);
-            //_capture.WaveFormat = myformat;
+            var myformat = new WaveFormat(48000, 16, 2);
+            _waveIn.WaveFormat = myformat;
             _waveIn.DataAvailable += CaptureOnDataAvabile;
             _waveIn.StartRecording();
         }
@@ -126,16 +128,19 @@ namespace SoundAnalyzer.ViewModels {
                 var captureDevice = CaptureDevicesMetadata.Find(c => c.ProductName == microphoneName);
                 capture.DeviceNumber = CaptureDevicesMetadata.IndexOf(captureDevice);
                 _sampleRate = capture.WaveFormat.SampleRate;
-                _goertzelFilter = new GoertzelAlgorithm(_sampleRate);
+                _goertzelFilter = new GoertzelAlgorithm(48000);
             }
         }
 
         private void CaptureOnDataAvabile(object sender, WaveInEventArgs e) {
-            //UpdatePeakMeter();
+            UpdatePeakMeter();
             var buffer = new List<float>();
-            for (int index = 0; index < e.BytesRecorded; index += 2) {
-                short sample = BitConverter.ToInt16(e.Buffer, index);
-                float sample32 = sample / (float)Int16.MaxValue;
+            var value = e.Buffer;
+            var bytesRecorded = e.BytesRecorded;
+            var bufferIncrement = _waveIn.WaveFormat.BlockAlign;
+            for (var index = 0; index < bytesRecorded; index += 2) {
+                short sample = BitConverter.ToInt16(value, index);
+                var sample32 = sample / (float)Int16.MaxValue;
                 buffer.Add(sample32);
             }
 
@@ -154,13 +159,13 @@ namespace SoundAnalyzer.ViewModels {
         }
 
         private void ChangeNotesColor() {
-            _synchronizationContext.Post(s => Notes.ForEach(n => n.Color = new SolidColorBrush(Colors.Black)), null);
+            //_synchronizationContext.Post(s => Notes.ForEach(n => n.Color = new SolidColorBrush(Colors.Black)), null);
             _synchronizationContext.Post(s => Notes[_sheet.GetCurentCounter()].Color = new SolidColorBrush(Colors.Green), null);
             _synchronizationContext.Post(s => OnPropertyChanged("Notes"), null);
         }
 
-        //private void UpdatePeakMeter() {
-        //    _synchronizationContext.Post(s => Peak = SelectedDevice.AudioMeterInformation.MasterPeakValue, null);
-        //}
+        private void UpdatePeakMeter() {
+            _synchronizationContext.Post(s => Peak = _defaultDevice.AudioMeterInformation.MasterPeakValue, null);
+        }
     }
 }

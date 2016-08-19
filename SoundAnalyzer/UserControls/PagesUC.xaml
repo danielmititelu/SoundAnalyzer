@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SoundAnalyzer.UserControls"
              mc:Ignorable="d" 
-             Height="29.7cm" Width="21cm">
+             Width="21cm" d:DesignHeight="1001.262">
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel Name="PagePanel" Width="21cm" >
